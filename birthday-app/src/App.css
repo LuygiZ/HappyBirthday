@@ -83,7 +83,12 @@
 @media screen and (max-width: 768px) {
   .app-wrapper {
     min-height: 100vh;
-    height: auto;
+    max-height: 100vh;
+    height: 10en;
+  }
+
+  .content {
+       height: auto;
   }
 
   .content {
