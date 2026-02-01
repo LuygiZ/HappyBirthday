@@ -332,27 +332,28 @@
   .letter-overlay {
     padding: 10px;
     overflow-y: auto;
+    align-items: flex-start;
+    padding-top: 60px;
   }
 
   .letter-container {
     width: 95%;
-    max-width: 340px;
+    max-width: 320px;
     height: auto;
-    min-height: 450px;
-    display: flex;
-    flex-direction: column;
+    display: block;
     position: relative;
+    perspective: none;
+    transform-style: flat;
   }
 
   .letter-page {
     width: 100%;
     height: auto;
-    min-height: 200px;
     position: relative;
+    display: block;
   }
 
   .letter-left {
-    order: 1;
     border-radius: 15px 15px 0 0;
     border-right: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -360,14 +361,13 @@
     align-items: center;
     justify-content: center;
     padding: 15px;
+    min-height: 120px;
   }
 
   .letter-right {
-    order: 2;
     border-radius: 0 0 15px 15px;
     border-left: none;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
-    min-height: 280px;
   }
 
   .letter-cover {
@@ -375,73 +375,91 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px;
+    height: 120px;
     transform-origin: bottom center;
     z-index: 10;
+    transform-style: preserve-3d;
   }
 
   .letter-container.opened .letter-cover {
-    transform: rotateX(160deg) translateZ(10px);
+    transform: rotateX(170deg);
     pointer-events: none;
   }
 
   .cover-front {
     border-radius: 15px 15px 0 0;
-    padding: 15px;
+    padding: 12px;
+    height: 100%;
   }
 
   .cover-back {
     border-radius: 0 0 15px 15px;
     transform: rotateX(180deg);
+    height: 100%;
   }
 
   .cover-image {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 6px;
+    border-width: 2px;
   }
 
   .cover-title {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
 
   .cover-recipient {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+  }
+
+  .cover-decoration {
+    margin-top: 8px;
   }
 
   .cover-decoration .fa-heart {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .page-content {
-    padding: 15px;
+    padding: 12px;
+    overflow: visible;
+    height: auto;
   }
 
   .left-content {
-    padding: 10px;
+    padding: 8px;
+    min-height: 100px;
   }
 
   .mewmew-letter {
-    width: 60px;
+    width: 50px;
+  }
+
+  .heart-decoration {
+    gap: 8px;
   }
 
   .heart-decoration .fa-heart {
-    font-size: 18px;
-  }
-
-  .heart-decoration .fa-heart.small {
     font-size: 14px;
   }
 
-  .heart-decoration .fa-heart.smaller {
+  .heart-decoration .fa-heart.small {
     font-size: 10px;
   }
 
+  .heart-decoration .fa-heart.smaller {
+    font-size: 8px;
+  }
+
   .right-content {
-    padding: 15px;
-    overflow-y: auto;
-    max-height: 280px;
-    background: #fff !important;
+    padding: 12px;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    background: #ffffff !important;
+    display: block !important;
   }
 
   .right-content.visible {
@@ -451,56 +469,67 @@
   }
 
   .letter-greeting {
-    font-family: 'Dancing Script', 'Sriracha', 'Georgia', cursive, serif;
-    font-size: 1.2rem;
+    font-family: 'Sriracha', 'Georgia', cursive, serif !important;
+    font-size: 1.1rem;
     margin-bottom: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 6px;
     color: #FF7882 !important;
     visibility: visible !important;
     opacity: 1 !important;
+    display: block !important;
   }
 
   .letter-text {
-    font-family: 'Dancing Script', 'Sriracha', 'Georgia', cursive, serif;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-family: 'Sriracha', 'Georgia', cursive, serif !important;
+    font-size: 0.85rem;
+    line-height: 1.4;
     color: #333333 !important;
     visibility: visible !important;
     opacity: 1 !important;
+    display: block !important;
+    overflow: visible !important;
+    flex: none !important;
   }
 
   .letter-text p {
     margin: 0 0 8px 0;
     color: #333333 !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
   }
 
   .letter-signature {
-    font-family: 'Dancing Script', 'Sriracha', 'Georgia', cursive, serif;
-    font-size: 0.95rem;
+    font-family: 'Sriracha', 'Georgia', cursive, serif !important;
+    font-size: 0.85rem;
     padding: 8px;
-    margin-top: 10px !important;
+    margin-top: 8px !important;
     color: #FF7882 !important;
     visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
   }
 
   .letter-hearts {
-    font-size: 1.2rem;
-    margin-top: 8px;
+    font-size: 1rem;
+    margin-top: 6px;
+    display: block !important;
   }
 
-  .letter-container::before {
+  .letter-container::before,
+  .letter-container::after {
     display: none;
   }
 
   .letter-close {
-    top: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    position: fixed;
   }
 
   .letter-close i {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
