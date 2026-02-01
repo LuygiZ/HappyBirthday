@@ -102,54 +102,20 @@
 }
 
 @media screen and (max-width: 768px) {
-  .decorate-star.star1 {
-    top: 50px;
-    left: 50px;
-  }
-
-  .decorate-star.star2 {
-    top: 30px;
-    right: 100px;
-  }
-
-  .decorate-star.star3 {
-    top: 200px;
-    left: auto;
-    right: 30px;
-  }
-
-  .decorate-flower.flower-one {
-    top: 150px;
-    left: 20px;
-  }
-
-  .decorate-flower.flower-two {
-    top: 300px;
-    left: auto;
-    right: 50px;
-  }
-
-  .decorate-flower.flower-three {
+  .decorate-star,
+  .decorate-flower,
+  .smiley-icon,
+  .decorate-bottom {
     display: none;
   }
 
-  .smiley-icon {
-    bottom: 100px;
-    left: auto;
-    right: 20px;
-  }
-
-  .smiley-icon img {
-    width: 60px;
-  }
-
   .mewmew-decoration {
-    bottom: 20px;
-    left: 20px;
+    bottom: 10px;
+    left: 10px;
   }
 
   .mewmew-decoration img {
-    width: 80px;
+    width: 50px;
   }
 }
 

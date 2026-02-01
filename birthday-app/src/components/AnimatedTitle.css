@@ -83,28 +83,38 @@
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 1.5rem;
-    letter-spacing: 4px;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
+
+  .title .happy,
+  .title .birthday {
+    text-shadow:
+      2px 2px var(--color-black),
+      -2px 2px var(--color-black),
+      2px -2px var(--color-black),
+      -2px -2px var(--color-black),
+      2px 4px 0 var(--color-black);
   }
 
   .title .hat {
-    right: 10px;
-    top: -200px;
+    right: 5px;
+    top: -150px;
     animation: topHatMobile 4s 7s forwards ease;
   }
 
   .title .hat img {
-    width: 70px;
+    width: 55px;
   }
 
   @keyframes topHatMobile {
     20%, 30% {
-      top: -25px;
+      top: -20px;
       transform-origin: left;
       transform: rotate(-40deg);
     }
     35%, 100% {
-      top: -25px;
+      top: -20px;
       transform: rotate(0deg);
     }
   }

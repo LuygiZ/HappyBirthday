@@ -161,36 +161,56 @@
 }
 
 @media screen and (max-width: 768px) {
+  .box-account {
+    margin-top: 0;
+  }
+
   .image-container {
-    width: 300px;
-    height: 300px;
+    width: 220px;
+    height: 220px;
+    border-width: 4px;
+  }
+
+  .slide-indicators {
+    bottom: 10px;
+    gap: 5px;
+  }
+
+  .indicator {
+    width: 6px;
+    height: 6px;
   }
 
   .name-tag {
-    padding: 4px 12px;
-    bottom: -10px;
+    padding: 4px 10px;
+    bottom: -15px;
+    border-width: 2px;
   }
 
   .name-tag span {
-    font-size: 1rem;
+    font-size: 0.85rem;
     margin: 0 5px;
   }
 
+  .name-tag .fa-heart {
+    font-size: 0.7rem;
+  }
+
   .balloon-one {
-    top: 10px;
-    left: -50px;
+    top: -10px;
+    left: -35px;
   }
 
   .balloon-one img {
-    width: 70px;
+    width: 50px;
   }
 
   .balloon-two {
-    top: 80px;
-    right: -45px;
+    top: 60px;
+    right: -35px;
   }
 
   .balloon-two img {
-    width: 70px;
+    width: 50px;
   }
 }

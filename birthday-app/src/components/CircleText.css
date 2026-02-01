@@ -76,21 +76,6 @@
 
 @media screen and (max-width: 768px) {
   .circle-container {
-    top: 10px;
-    right: 10px;
-  }
-
-  .text-circle {
-    width: 70px;
-    height: 70px;
-  }
-
-  .text-circle span {
-    font-size: 0.5rem;
-    transform-origin: 0 32px;
-  }
-
-  .center-heart {
-    font-size: 0.9rem;
+    display: none;
   }
 }

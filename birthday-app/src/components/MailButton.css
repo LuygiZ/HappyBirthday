@@ -5,7 +5,6 @@
 
 #btn-letter {
   position: relative;
-  margin-top: 30px;
   background: linear-gradient(135deg, var(--color-text-pink), #ff9a9e);
   outline: none;
   padding: 12px 25px;
@@ -67,7 +66,8 @@
 
 @media screen and (max-width: 768px) {
   #btn-letter {
-    padding: 10px 20px;
-    font-size: 1rem;
+    margin-top: 10px;
+    padding: 8px 18px;
+    font-size: 0.9rem;
   }
 }

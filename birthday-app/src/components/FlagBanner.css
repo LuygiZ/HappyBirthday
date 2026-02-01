@@ -27,13 +27,19 @@
 }
 
 @media screen and (max-width: 768px) {
+  @keyframes translateYFlag {
+    to {
+      transform: translateY(-20px);
+    }
+  }
+
   .flag-birthday .flag-left {
-    width: 200px;
-    transform: rotate(-10deg) translate(-80px, 3px);
+    width: 150px;
+    transform: rotate(-10deg) translate(-60px, 0);
   }
 
   .flag-birthday .flag-right {
-    width: 200px;
-    transform: rotate(10deg) translate(80px, 3px) scaleX(-1);
+    width: 150px;
+    transform: rotate(10deg) translate(60px, 0) scaleX(-1);
   }
 }
