@@ -322,46 +322,65 @@
 
 /* Responsivo */
 @media screen and (max-width: 768px) {
+  .letter-overlay {
+    padding: 10px;
+    overflow-y: auto;
+  }
+
   .letter-container {
     width: 95%;
-    max-width: 360px;
-    height: 500px;
+    max-width: 340px;
+    height: auto;
+    min-height: 450px;
+    display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   .letter-page {
     width: 100%;
-    height: 50%;
+    height: auto;
+    min-height: 200px;
+    position: relative;
   }
 
   .letter-left {
-    top: 0;
+    order: 1;
     border-radius: 15px 15px 0 0;
     border-right: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
   }
 
   .letter-right {
-    bottom: 0;
-    top: auto;
+    order: 2;
     border-radius: 0 0 15px 15px;
     border-left: none;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 280px;
   }
 
   .letter-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 50%;
+    height: 200px;
     transform-origin: bottom center;
+    z-index: 10;
   }
 
   .letter-container.opened .letter-cover {
-    transform: rotateX(160deg);
+    transform: rotateX(160deg) translateZ(10px);
+    pointer-events: none;
   }
 
   .cover-front {
     border-radius: 15px 15px 0 0;
-    padding: 20px;
+    padding: 15px;
   }
 
   .cover-back {
@@ -370,51 +389,91 @@
   }
 
   .cover-image {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 15px;
-  }
-
-  .cover-title {
-    font-size: 1.6rem;
-  }
-
-  .cover-recipient {
-    font-size: 0.95rem;
-  }
-
-  .page-content {
-    padding: 20px;
-  }
-
-  .mewmew-letter {
-    width: 80px;
-  }
-
-  .letter-greeting {
-    font-size: 1.4rem;
+    width: 60px;
+    height: 60px;
     margin-bottom: 10px;
   }
 
-  .letter-text {
-    font-size: 1rem;
+  .cover-title {
+    font-size: 1.4rem;
   }
 
-  .letter-signature {
-    font-size: 1.1rem;
+  .cover-recipient {
+    font-size: 0.85rem;
+  }
+
+  .cover-decoration .fa-heart {
+    font-size: 20px;
+  }
+
+  .page-content {
+    padding: 15px;
+  }
+
+  .left-content {
     padding: 10px;
   }
 
+  .mewmew-letter {
+    width: 60px;
+  }
+
+  .heart-decoration .fa-heart {
+    font-size: 18px;
+  }
+
+  .heart-decoration .fa-heart.small {
+    font-size: 14px;
+  }
+
+  .heart-decoration .fa-heart.smaller {
+    font-size: 10px;
+  }
+
+  .right-content {
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 280px;
+  }
+
+  .letter-greeting {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+  }
+
+  .letter-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .letter-text p {
+    margin: 0 0 8px 0;
+  }
+
+  .letter-signature {
+    font-size: 0.95rem;
+    padding: 8px;
+    margin-top: 10px !important;
+  }
+
+  .letter-hearts {
+    font-size: 1.2rem;
+    margin-top: 8px;
+  }
+
   .letter-container::before {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.08) 0%,
-      transparent 50%,
-      rgba(0, 0, 0, 0.03) 100%
-    );
-    transform: translateY(-50%);
+    display: none;
+  }
+
+  .letter-close {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .letter-close i {
+    font-size: 20px;
   }
 }
