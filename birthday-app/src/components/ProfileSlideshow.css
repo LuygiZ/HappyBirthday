@@ -1,7 +1,7 @@
 .box-account {
   position: relative;
   transform: translateY(700px);
-  animation: topBoxImage 8s 7s forwards ease-in;
+  animation: topBoxImage 5s 4s forwards ease-in;
 }
 
 @keyframes topBoxImage {
