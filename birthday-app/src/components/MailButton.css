@@ -1,0 +1,73 @@
+.btn-container {
+  transform: scale(0);
+  animation: scaleCricle 2s 16s forwards ease-in-out;
+}
+
+#btn-letter {
+  position: relative;
+  margin-top: 30px;
+  background: linear-gradient(135deg, var(--color-text-pink), #ff9a9e);
+  outline: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  border: 3px solid var(--color-black);
+  font-family: "Sriracha", cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 4px 15px rgba(255, 120, 130, 0.4),
+    0 0 0 0 rgba(255, 120, 130, 0.4);
+  color: white;
+  font-weight: 600;
+}
+
+#btn-letter:active {
+  transform: scale(0.95);
+}
+
+#btn-letter .mail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#btn-letter i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+#btn-letter:hover {
+  background: linear-gradient(135deg, #ff6b7a, var(--color-text-pink));
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 25px rgba(255, 120, 130, 0.5),
+    0 0 40px rgba(255, 120, 130, 0.3);
+}
+
+#btn-letter:hover i {
+  animation: bounceEnvelope 0.6s infinite;
+}
+
+@keyframes bounceEnvelope {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(-5deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #btn-letter {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}

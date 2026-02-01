@@ -1,0 +1,300 @@
+.box-mail {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.3);
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.box-mail.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.close-btn {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 35px;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  z-index: 1001;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.close-btn:hover {
+  background: rgba(255, 120, 130, 0.8);
+  transform: rotate(90deg);
+}
+
+.box-mail-container {
+  position: relative;
+  width: 700px;
+  height: 450px;
+  display: flex;
+  perspective: 1500px;
+  transition: all 0.5s ease;
+}
+
+.box-mail-container:hover {
+  filter: drop-shadow(0 0 20px rgba(255, 120, 130, 0.6));
+}
+
+.card1, .card2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  transform-style: preserve-3d;
+}
+
+.card1 {
+  left: 0;
+  background: linear-gradient(135deg, var(--color-text-pink), #ff9a9e, #ffa8b0);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  transform-origin: left center;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 20px 0 0 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.box-mail-container:hover .card1 {
+  transform: rotateY(180deg);
+}
+
+.card2 {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, #fff8f8 50%);
+  transition: all 0.8s ease;
+  border-radius: 20px;
+  z-index: 0;
+}
+
+.user-img {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #fff, #ffe4e6);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.user-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card1 .username {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card1 h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 3px;
+  transform: rotate(-3deg);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.mewmew-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  animation: bounceIn 1s ease-out;
+}
+
+.mewmew-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.card2-content {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-text-pink), #ff9a9e);
+  padding: 25px 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  border-radius: 20px;
+}
+
+.box-mail-container:hover .card2-content {
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card2-content h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: white;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.8s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card2-content h3.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.message {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  color: white;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  margin-top: 10px;
+}
+
+.message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.message p {
+  margin-bottom: 8px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message .final-message {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.decorative-hearts {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.heart-float {
+  font-size: 1.2rem;
+  animation: floatHeart 2s infinite ease-in-out;
+  opacity: 0.9;
+}
+
+.heart-float.delay-1 {
+  animation-delay: 0.3s;
+}
+
+.heart-float.delay-2 {
+  animation-delay: 0.6s;
+}
+
+@keyframes floatHeart {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .box-mail-container {
+    width: 95%;
+    height: auto;
+    min-height: 400px;
+    flex-direction: column;
+  }
+
+  .card1, .card2 {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+  }
+
+  .card1 {
+    border-radius: 20px 20px 0 0;
+    padding: 30px;
+  }
+
+  .card2 {
+    border-radius: 0 0 20px 20px;
+  }
+
+  .box-mail-container:hover .card1 {
+    transform: none;
+  }
+
+  .card1 h3 {
+    font-size: 1.8rem;
+  }
+
+  .message {
+    font-size: 1.1rem;
+  }
+
+  .mewmew-container {
+    width: 60px;
+    height: 60px;
+    bottom: 10px;
+    right: 10px;
+  }
+}

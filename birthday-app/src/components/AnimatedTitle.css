@@ -1,0 +1,111 @@
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: "Titan One", sans-serif;
+  font-size: 3rem;
+  flex-direction: column;
+  perspective: 1000px;
+}
+
+.title .happy,
+.title .birthday {
+  position: relative;
+  text-shadow:
+    4px 4px var(--color-black),
+    -4px 4px var(--color-black),
+    4px -4px var(--color-black),
+    -4px -4px var(--color-black),
+    4px 8px 0 var(--color-black);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.title .happy {
+  color: var(--color-white);
+}
+
+.title .birthday {
+  color: var(--color-text-pink);
+}
+
+.title .happy span,
+.title .birthday span {
+  transform: translateY(50px);
+  opacity: 0;
+  visibility: hidden;
+  animation: txtTranslateY 0.5s var(--t) forwards;
+  display: inline-block;
+}
+
+@keyframes txtTranslateY {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.title .hat {
+  position: absolute;
+  right: -20px;
+  top: -350px;
+  transform: rotate(-40deg);
+  z-index: -1;
+  animation: topHat 4s 7s forwards ease;
+}
+
+.title .hat img {
+  width: 130px;
+}
+
+@keyframes topHat {
+  20%, 30% {
+    top: -30px;
+    transform-origin: left;
+    transform: rotate(-40deg);
+  }
+  35%, 100% {
+    top: -30px;
+    transform: rotate(0deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+  }
+
+  .title .hat {
+    right: 10px;
+    top: -200px;
+    animation: topHatMobile 4s 7s forwards ease;
+  }
+
+  .title .hat img {
+    width: 70px;
+  }
+
+  @keyframes topHatMobile {
+    20%, 30% {
+      top: -25px;
+      transform-origin: left;
+      transform: rotate(-40deg);
+    }
+    35%, 100% {
+      top: -25px;
+      transform: rotate(0deg);
+    }
+  }
+}

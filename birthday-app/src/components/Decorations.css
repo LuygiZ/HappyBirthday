@@ -1,0 +1,178 @@
+.decorate-star {
+  position: absolute;
+  transform: scale(0);
+  background-color: var(--color-black);
+  clip-path: polygon(0 50%, 35% 35%, 50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%);
+  animation: scaleCricle 3s var(--t) forwards, scaleStar 2s 16s infinite ease-in-out;
+  z-index: 2;
+}
+
+.decorate-star.star1 {
+  width: 20px;
+  height: 20px;
+  top: 75px;
+  left: 300px;
+}
+
+.decorate-star.star2 {
+  width: 15px;
+  height: 20px;
+  top: 35px;
+  right: 360px;
+}
+
+.decorate-star.star3 {
+  width: 14px;
+  height: 14px;
+  top: 290px;
+  left: 630px;
+}
+
+.decorate-star.star4 {
+  width: 18px;
+  height: 18px;
+  bottom: 60px;
+  left: 35px;
+}
+
+.decorate-star.star5 {
+  width: 16px;
+  height: 18px;
+  bottom: 140px;
+  left: 500px;
+}
+
+@keyframes scaleStar {
+  25% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.decorate-flower {
+  position: absolute;
+  transform: scale(0);
+  animation: scaleCricle 3s var(--t) forwards ease-in-out;
+  z-index: 2;
+}
+
+.decorate-flower img {
+  width: 20px;
+}
+
+.decorate-flower.flower-one {
+  top: 250px;
+  left: 50px;
+}
+
+.decorate-flower.flower-two {
+  top: 225px;
+  left: 540px;
+}
+
+.decorate-flower.flower-three {
+  top: 150px;
+  right: 235px;
+}
+
+.decorate-bottom {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  z-index: 2;
+}
+
+.decorate-bottom img {
+  width: 100px;
+}
+
+.smiley-icon {
+  position: absolute;
+  bottom: 180px;
+  left: 600px;
+  transform: scale(0);
+  animation: scaleCricle 3s 15s forwards ease-in-out;
+  z-index: 2;
+}
+
+.smiley-icon img {
+  width: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .decorate-star.star1 {
+    top: 50px;
+    left: 50px;
+  }
+
+  .decorate-star.star2 {
+    top: 30px;
+    right: 100px;
+  }
+
+  .decorate-star.star3 {
+    top: 200px;
+    left: auto;
+    right: 30px;
+  }
+
+  .decorate-flower.flower-one {
+    top: 150px;
+    left: 20px;
+  }
+
+  .decorate-flower.flower-two {
+    top: 300px;
+    left: auto;
+    right: 50px;
+  }
+
+  .decorate-flower.flower-three {
+    display: none;
+  }
+
+  .smiley-icon {
+    bottom: 100px;
+    left: auto;
+    right: 20px;
+  }
+
+  .smiley-icon img {
+    width: 60px;
+  }
+
+  .mewmew-decoration {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .mewmew-decoration img {
+    width: 80px;
+  }
+}
+
+.mewmew-decoration {
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+  transform: scale(0);
+  animation: scaleCricle 3s 16s forwards ease-in-out, mewmewBounce 2s 19s infinite ease-in-out;
+  z-index: 5;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+.mewmew-decoration img {
+  width: 120px;
+  height: auto;
+}
+
+@keyframes mewmewBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}

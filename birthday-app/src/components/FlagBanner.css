@@ -1,0 +1,39 @@
+.flag-birthday {
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-200px);
+  animation: translateYFlag 1.5s 2s forwards;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+@keyframes translateYFlag {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+.flag-birthday .flag-left {
+  width: 350px;
+  transform: rotate(-10deg) translate(-20px, 30px);
+}
+
+.flag-birthday .flag-right {
+  width: 350px;
+  transform: rotate(10deg) translate(20px, 30px) scaleX(-1);
+}
+
+@media screen and (max-width: 768px) {
+  .flag-birthday .flag-left {
+    width: 200px;
+    transform: rotate(-10deg) translate(-80px, 3px);
+  }
+
+  .flag-birthday .flag-right {
+    width: 200px;
+    transform: rotate(10deg) translate(80px, 3px) scaleX(-1);
+  }
+}
