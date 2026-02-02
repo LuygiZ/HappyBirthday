@@ -74,6 +74,7 @@ const MailBox = ({ isOpen, onClose }: MailBoxProps) => {
             <div className="message-text">
               <p>Feliz aniversário sweetie! Obrigado por tudo, pelas memórias, pelo carinho, afeto e sobretudo pelas tuas tentativas de me rebaixar 🙂‍↕️</p>
               <p>Tenho muito orgulho em ti! A vida são bué de cenas e ainda bem que eu tive a sorte de seres uma parte da minha vida.</p>
+              <p>Espero que o teu dia seja tão incrível e lindo quanto tu!</p>
               <p className="final-signature">Aproveita cada segundo, Lilinha, pois hoje o dia é teu! Arrasaaaa! 💕</p>
             </div>
           </div>
