@@ -11,90 +11,77 @@ const MailBox = ({ isOpen, onClose }: MailBoxProps) => {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      // Abre a carta após um pequeno delay
-      const openTimer = setTimeout(() => setIsCardOpen(true), 500);
-      // Mostra o conteúdo após a carta abrir completamente
-      const contentTimer = setTimeout(() => setShowContent(true), 2000);
-
-      return () => {
-        clearTimeout(openTimer);
-        clearTimeout(contentTimer);
-      };
-    } else {
+    if (!isOpen) {
       setIsCardOpen(false);
       setShowContent(false);
     }
   }, [isOpen]);
 
-  const handleClose = () => {
-    setShowContent(false);
-    setTimeout(() => setIsCardOpen(false), 100);
-    setTimeout(() => onClose(), 600);
+  const handleOpenCard = () => {
+    if (!isCardOpen) {
+      setIsCardOpen(true);
+      // O conteúdo da página direita aparece após metade da animação
+      setTimeout(() => setShowContent(true), 600);
+    }
   };
+
+  const handleClose = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setShowContent(false);
+    setIsCardOpen(false);
+    setTimeout(() => onClose(), 800);
+  };
+
+  if (!isOpen) return null;
 
   return (
     <div className={`letter-overlay ${isOpen ? 'active' : ''}`}>
-      <button className="letter-close" onClick={handleClose}>
+      <button className="letter-close" onClick={handleClose} aria-label="Fechar">
         <i className="fa-solid fa-xmark"></i>
       </button>
 
-      <div className={`letter-container ${isCardOpen ? 'opened' : ''}`}>
-        {/* Página interior esquerda */}
-        <div className="letter-page letter-left">
-          <div className="page-content left-content">
-            <div className="letter-decoration">
-              <img src="/images/mewmew.gif" alt="Mew Mew" className="mewmew-letter" />
-            </div>
-            <div className="heart-decoration">
-              <i className="fa-solid fa-heart"></i>
-              <i className="fa-solid fa-heart small"></i>
-              <i className="fa-solid fa-heart smaller"></i>
-            </div>
-          </div>
-        </div>
+      <div 
+        className={`book-wrapper ${isCardOpen ? 'is-opened' : ''}`} 
+        onClick={handleOpenCard}
+      >
 
-        {/* Página interior direita */}
-        <div className="letter-page letter-right">
-          <div className={`page-content right-content ${showContent ? 'visible' : ''}`}>
-            <h2 className="letter-greeting">Com Carinho,</h2>
-            <div className="letter-text">
-              <p>
-                Feliz aniversário! Sabes que és uma pessoa muito especial para mim.
-                Desde que apareceste, os meus dias ficaram mais brilhantes e agradeço
-                muito por te ter por perto.
-              </p>
-              <p>
-                Espero que o teu dia seja tão incrível quanto tu! Que todos os teus
-                sonhos se realizem e que nunca te falte esse sorriso lindo.
-              </p>
-              <p>
-                Estou sempre aqui para ti, para conversar, para rir ou apenas para
-                acompanhar o teu caminho.
-              </p>
-              <p className="letter-signature">
-                Hoje o dia é todo teu! Aproveita cada segundo, Lilinha.
-              </p>
-            </div>
-            <div className="letter-hearts">
-              <span>💕</span>
-            </div>
-          </div>
-        </div>
+        {/* Divisória Central (Sombra da Dobra) */}
+        <div className="book-spine"></div>
 
-        {/* Capa frontal (dobra para a esquerda) */}
-        <div className="letter-cover">
-          <div className="cover-front">
-            <div className="cover-image">
+        {/* LADO ESQUERDO: Capa que roda 180º */}
+        <div className="book-leaf-left">
+          {/* Frente Rosa */}
+          <div className="leaf-front-pink">
+            <div className="cover-circle">
               <img src="/images/her.png" alt="Lilinha" />
             </div>
-            <h3 className="cover-recipient">Para: Lilinha</h3>
-            <h2 className="cover-title">Muitos Parabéns!</h2>
-            <div className="cover-decoration">
+            <h3 className="to-text">Para: Lilinha</h3>
+            <h2 className="title-text">Muitos Parabéns!</h2>
+            {!isCardOpen && <p className="tap-hint">Clica para abrir ✨</p>}
+          </div>
+
+          {/* Verso Branco (Página Interior Esquerda) */}
+          <div className="leaf-back-white">
+            <img src="/images/mewmew.gif" alt="Mew Mew" className="gif-inside" />
+            <div className="hearts-deco">
+              <i className="fa-solid fa-heart"></i>
+              <i className="fa-solid fa-heart"></i>
               <i className="fa-solid fa-heart"></i>
             </div>
           </div>
-          <div className="cover-back"></div>
+        </div>
+
+        {/* LADO DIREITO: Página Fixa (Interior Direita) */}
+        <div className="book-base-right">
+          <div className={`text-content ${showContent ? 'is-visible' : ''}`}>
+            <h2 className="greeting-title">Para Uma Pessoa Deveras Especial,</h2>
+            <div className="message-text">
+              <p>Feliz aniversário sweetie! Espero que mesmo longe, sintas o carinho e o calor desta carta. Obrigado por tudo, fazes-me ser uma pessoa melhor todos os dias.</p>
+              <p>A vida são bué de cenas mas ainda bem que tu foste uma delas na minha vida.</p>
+              <p>Espero que o teu dia seja tão incrível quanto tu!</p>
+              <p className="final-signature">Aproveita cada segundo, Lilinha, pois hoje o dia é teu! Arrasaaaa! 💕</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

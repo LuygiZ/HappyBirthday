@@ -34,12 +34,12 @@
   }
 
   .flag-birthday .flag-left {
-    width: 120px;
+    width: 220px;
     transform: rotate(-10deg) translate(-50px, -5px);
   }
 
   .flag-birthday .flag-right {
-    width: 120px;
+    width: 220px;
     transform: rotate(10deg) translate(50px, -5px) scaleX(-1);
   }
 }

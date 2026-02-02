@@ -1,535 +1,136 @@
-/* Overlay de fundo */
+/* Overlay e Fundo */
 .letter-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 2000; opacity: 0; visibility: hidden;
+  transition: all 0.4s ease;
 }
 
-.letter-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
+.letter-overlay.active { opacity: 1; visibility: visible; }
 
-/* Botão de fechar */
 .letter-close {
   position: fixed;
-  top: 25px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  border: none;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 1001;
+  top: 25px; right: 25px;
+  width: 45px; height: 45px;
+  border-radius: 50%; border: none;
+  background: white; color: #FF7882;
+  cursor: pointer; z-index: 3000;
+  transition: transform 0.3s ease;
 }
+.letter-close:hover { transform: scale(1.1) rotate(90deg); }
 
-.letter-close i {
-  color: white;
-  font-size: 24px;
-}
-
-.letter-close:hover {
-  background: var(--color-text-pink);
-  transform: rotate(90deg);
-}
-
-/* Container da carta */
-.letter-container {
+/* Contentor do Livro */
+.book-wrapper {
   position: relative;
-  width: 700px;
-  height: 450px;
+  width: 350px; /* Largura da capa fechada */
+  height: 500px;
   perspective: 2000px;
-  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  cursor: pointer;
 }
 
-/* Páginas interiores */
-.letter-page {
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(135deg, #fff9f9 0%, #fff 50%, #fffafa 100%);
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.03);
+/* Centraliza o livro aberto deslocando-o metade da largura para a direita */
+.book-wrapper.is-opened {
+  transform: translateX(175px);
 }
 
-.letter-left {
-  left: 0;
-  border-radius: 15px 0 0 15px;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.letter-right {
-  right: 0;
-  border-radius: 0 15px 15px 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Conteúdo das páginas */
-.page-content {
-  width: 100%;
-  height: 100%;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.left-content {
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(145deg, #fff5f5 0%, #fff 100%);
-  border-radius: 15px 0 0 15px;
-}
-
-.letter-decoration {
-  margin-bottom: 20px;
-}
-
-.mewmew-letter {
-  width: 120px;
-  height: auto;
-  filter: drop-shadow(0 5px 15px rgba(255, 120, 130, 0.3));
-}
-
-.heart-decoration {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.heart-decoration .fa-heart {
-  color: var(--color-text-pink);
-  font-size: 24px;
-  animation: heartPulse 1.5s infinite ease-in-out;
-}
-
-.heart-decoration .fa-heart.small {
-  font-size: 18px;
-  animation-delay: 0.2s;
-}
-
-.heart-decoration .fa-heart.smaller {
-  font-size: 14px;
-  animation-delay: 0.4s;
-}
-
-@keyframes heartPulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-}
-
-/* Conteúdo direito - texto */
-.right-content {
-  justify-content: flex-start;
-  background: linear-gradient(145deg, #fff 0%, #fffafa 100%);
-  border-radius: 0 15px 15px 0;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
-}
-
-.right-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.letter-greeting {
-  font-family: 'Dancing Script', 'Sriracha', 'Georgia', cursive, serif;
-  font-size: 1.8rem;
-  color: #FF7882;
-  margin: 0 0 15px 0;
-  padding-bottom: 10px;
-  border-bottom: 2px solid rgba(255, 120, 130, 0.2);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.letter-text {
-  font-family: 'Dancing Script', 'Sriracha', 'Georgia', cursive, serif;
-  font-size: 1.15rem;
-  color: #333333;
-  line-height: 1.6;
-  flex: 1;
-  overflow-y: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.letter-text p {
-  margin: 0 0 12px 0;
-}
-
-.letter-text p:last-child {
-  margin-bottom: 0;
-}
-
-.letter-signature {
-  font-family: 'Dancing Script', 'Sriracha', 'Georgia', cursive, serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #FF7882;
-  text-align: center;
-  margin-top: 15px !important;
-  padding: 12px;
-  background: rgba(255, 120, 130, 0.08);
-  border-radius: 10px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.letter-hearts {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-top: 10px;
-}
-
-/* Capa da carta (parte que abre) */
-.letter-cover {
+/* Divisória / Dobra Central */
+.book-spine {
   position: absolute;
   left: 0;
   top: 0;
-  width: 50%;
+  width: 40px;
   height: 100%;
+  background: linear-gradient(to right, 
+    rgba(0,0,0,0.12) 0%, 
+    rgba(0,0,0,0.05) 50%, 
+    transparent 100%);
+  z-index: 15;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+.is-opened .book-spine { opacity: 1; }
+
+/* A Folha que roda */
+.book-leaf-left {
+  position: absolute;
+  width: 100%; height: 100%;
+  z-index: 20;
   transform-style: preserve-3d;
-  transform-origin: right center;
-  transition: transform 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
-  z-index: 10;
+  transform-origin: left;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.letter-container.opened .letter-cover {
-  transform: rotateY(-160deg);
+.is-opened .book-leaf-left {
+  transform: rotateY(-180deg);
 }
 
-/* Frente da capa */
-.cover-front {
+.leaf-front-pink, .leaf-back-white {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(145deg, var(--color-text-pink) 0%, #ff9a9e 50%, #ffa8b0 100%);
-  border-radius: 15px 0 0 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
+  width: 100%; height: 100%;
   backface-visibility: hidden;
-  box-shadow:
-    5px 0 20px rgba(0, 0, 0, 0.15),
-    inset 0 0 50px rgba(255, 255, 255, 0.1);
 }
 
-/* Verso da capa */
-.cover-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(145deg, #fff5f5 0%, #fff 50%, #fffafa 100%);
+/* Capa Rosa */
+.leaf-front-pink {
+  background: linear-gradient(135deg, #FF7882 0%, #ff9a9e 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 30px; color: white;
   border-radius: 0 15px 15px 0;
-  backface-visibility: hidden;
+  box-shadow: 10px 0 20px rgba(0,0,0,0.2);
+}
+
+/* Interior Esquerdo (Verso da Capa) */
+.leaf-back-white {
+  background: white;
   transform: rotateY(180deg);
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.03);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: 15px 0 0 15px;
+  border-left: 1px solid #eee;
+  box-shadow: inset -15px 0 20px -10px rgba(0,0,0,0.1); /* Sombra da dobra */
 }
 
-.cover-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid white;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-}
-
-.cover-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.cover-recipient {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  color: white;
-  margin: 0 0 10px 0;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.cover-title {
-  font-family: 'Dancing Script', cursive;
-  font-size: 2.2rem;
-  color: white;
-  margin: 0;
-  text-align: center;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.cover-decoration {
-  margin-top: 20px;
-}
-
-.cover-decoration .fa-heart {
-  color: white;
-  font-size: 28px;
-  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.2));
-  animation: heartPulse 1.5s infinite ease-in-out;
-}
-
-/* Efeito de sombra na dobra */
-.letter-container::before {
-  content: '';
+/* Página Direita Fixa */
+.book-base-right {
   position: absolute;
-  left: 50%;
-  top: 0;
-  width: 20px;
-  height: 100%;
-  background: linear-gradient(to right,
-    rgba(0, 0, 0, 0.08) 0%,
-    transparent 50%,
-    rgba(0, 0, 0, 0.03) 100%
-  );
-  transform: translateX(-50%);
-  z-index: 5;
-  opacity: 0;
-  transition: opacity 0.8s ease 0.5s;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: white;
+  border-radius: 0 15px 15px 0;
+  z-index: 10;
+  padding: 40px;
+  display: flex; flex-direction: column; justify-content: center;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.1), inset 15px 0 20px -10px rgba(0,0,0,0.1);
 }
 
-.letter-container.opened::before {
-  opacity: 1;
-}
+/* Conteúdo */
+.text-content { opacity: 0; transition: opacity 0.5s ease 0.7s; }
+.text-content.is-visible { opacity: 1; }
 
-/* Sombra geral da carta */
-.letter-container::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 10%;
-  width: 80%;
-  height: 20px;
-  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
-  z-index: -1;
-}
+.greeting-title { font-family: 'Dancing Script', cursive; color: #FF7882; font-size: 2rem; margin-bottom: 15px; }
+.message-text { font-family: 'Dancing Script', cursive; font-size: 1.15rem; line-height: 1.5; color: #333; }
+.final-signature { margin-top: 20px; font-weight: bold; color: #FF7882; }
 
-/* Responsivo */
+.cover-circle { width: 130px; height: 130px; border-radius: 50%; border: 4px solid white; overflow: hidden; margin-bottom: 20px; }
+.cover-circle img { width: 100%; height: 100%; object-fit: cover; }
+.gif-inside { width: 130px; margin-bottom: 15px; }
+.hearts-deco { color: #FF7882; display: flex; gap: 10px; }
+.tap-hint { margin-top: 20px; font-size: 0.85rem; animation: pulse 2s infinite; color: white; }
+
+@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+/* Mobile */
 @media screen and (max-width: 768px) {
-  .letter-overlay {
-    padding: 10px;
-    overflow-y: auto;
-    align-items: flex-start;
-    padding-top: 60px;
-  }
-
-  .letter-container {
-    width: 95%;
-    max-width: 320px;
-    height: auto;
-    display: block;
-    position: relative;
-    perspective: none;
-    transform-style: flat;
-  }
-
-  .letter-page {
-    width: 100%;
-    height: auto;
-    position: relative;
-    display: block;
-  }
-
-  .letter-left {
-    border-radius: 15px 15px 0 0;
-    border-right: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    min-height: 120px;
-  }
-
-  .letter-right {
-    border-radius: 0 0 15px 15px;
-    border-left: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-  }
-
-  .letter-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    transform-origin: bottom center;
-    z-index: 10;
-    transform-style: preserve-3d;
-  }
-
-  .letter-container.opened .letter-cover {
-    transform: rotateX(170deg);
-    pointer-events: none;
-  }
-
-  .cover-front {
-    border-radius: 15px 15px 0 0;
-    padding: 12px;
-    height: 100%;
-  }
-
-  .cover-back {
-    border-radius: 0 0 15px 15px;
-    transform: rotateX(180deg);
-    height: 100%;
-  }
-
-  .cover-image {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 6px;
-    border-width: 2px;
-  }
-
-  .cover-title {
-    font-size: 1.1rem;
-  }
-
-  .cover-recipient {
-    font-size: 0.75rem;
-    margin-bottom: 5px;
-  }
-
-  .cover-decoration {
-    margin-top: 8px;
-  }
-
-  .cover-decoration .fa-heart {
-    font-size: 16px;
-  }
-
-  .page-content {
-    padding: 12px;
-    overflow: visible;
-    height: auto;
-  }
-
-  .left-content {
-    padding: 8px;
-    min-height: 100px;
-  }
-
-  .mewmew-letter {
-    width: 50px;
-  }
-
-  .heart-decoration {
-    gap: 8px;
-  }
-
-  .heart-decoration .fa-heart {
-    font-size: 14px;
-  }
-
-  .heart-decoration .fa-heart.small {
-    font-size: 10px;
-  }
-
-  .heart-decoration .fa-heart.smaller {
-    font-size: 8px;
-  }
-
-  .right-content {
-    padding: 12px;
-    overflow: visible !important;
-    height: auto !important;
-    max-height: none !important;
-    background: #ffffff !important;
-    display: block !important;
-  }
-
-  .right-content.visible {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-  }
-
-  .letter-greeting {
-    font-family: 'Sriracha', 'Georgia', cursive, serif !important;
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    color: #FF7882 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
-  }
-
-  .letter-text {
-    font-family: 'Sriracha', 'Georgia', cursive, serif !important;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #333333 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
-    overflow: visible !important;
-    flex: none !important;
-  }
-
-  .letter-text p {
-    margin: 0 0 8px 0;
-    color: #333333 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
-  }
-
-  .letter-signature {
-    font-family: 'Sriracha', 'Georgia', cursive, serif !important;
-    font-size: 0.85rem;
-    padding: 8px;
-    margin-top: 8px !important;
-    color: #FF7882 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
-  }
-
-  .letter-hearts {
-    font-size: 1rem;
-    margin-top: 6px;
-    display: block !important;
-  }
-
-  .letter-container::before,
-  .letter-container::after {
-    display: none;
-  }
-
-  .letter-close {
-    top: 10px;
-    right: 10px;
-    width: 36px;
-    height: 36px;
-    position: fixed;
-  }
-
-  .letter-close i {
-    font-size: 18px;
-  }
+  .book-wrapper { width: 300px; height: 450px; }
+  .book-wrapper.is-opened { transform: translateY(112px); }
+  .book-leaf-left { transform-origin: top; }
+  .is-opened .book-leaf-left { transform: rotateX(180deg); }
+  .leaf-back-white { transform: rotateX(180deg); border-radius: 0 0 15px 15px; box-shadow: inset 0 -15px 20px -10px rgba(0,0,0,0.1); }
+  .leaf-front-pink { border-radius: 15px 15px 0 0; }
+  .book-base-right { border-radius: 15px 15px 0 0; box-shadow: inset 0 15px 20px -10px rgba(0,0,0,0.1); }
+  .book-spine { width: 100%; height: 40px; left: 0; top: 0; transform: translateY(-20px); background: linear-gradient(to bottom, rgba(0,0,0,0.12), transparent); }
 }
