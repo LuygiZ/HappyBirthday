@@ -76,8 +76,8 @@ const MailBox = ({ isOpen, onClose }: MailBoxProps) => {
           <div className={`text-content ${showContent ? 'is-visible' : ''}`}>
             <h2 className="greeting-title">Para Uma Pessoa Deveras Especial,</h2>
             <div className="message-text">
-              <p>Feliz aniversário sweetie! Obrigado por tudo, fazes-me ser uma pessoa melhor todos os dias.</p>
-              <p>A vida são bué de cenas mas ainda bem que tu foste uma delas na minha vida :)</p>
+              <p>Feliz aniversário sweetie! Obrigado por tudo, pelas memórias, pelo carinho, afeto e sobretudo pelas tuas tentativas de me rebaixar🙂‍↕️</p>
+              <p>Tenho muito orgulho em ti! A vida são bué de cenas e ainda bem que eu tive a sorte de tu seres uma parte da minha vida.</p>
               <p>Espero que o teu dia seja tão incrível e lindo quanto tu!</p>
               <p className="final-signature">Aproveita cada segundo, Lilinha, pois hoje o dia é teu! Arrasaaaa! 💕</p>
             </div>
