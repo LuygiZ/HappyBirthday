@@ -21,7 +21,7 @@ function App() {
       <main className="content">
         <section className="left-section">
           <AnimatedTitle />
-          <DateOfBirth date="3 de Fevereiro" />
+          <DateOfBirth date="22 aninhos" />
           <MailButton onClick={() => setIsMailOpen(true)} />
         </section>
 

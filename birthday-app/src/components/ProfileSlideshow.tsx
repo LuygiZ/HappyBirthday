@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './ProfileSlideshow.css';
 
-const images = ['/images/her.png', '/images/her2.png', '/images/her3.png'];
+const images = ['/images/her.png', '/images/her2.png', '/images/her3.png', '/images/her4.png', '/images/her5.png', '/images/her6.png'];
 
 const ProfileSlideshow = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
