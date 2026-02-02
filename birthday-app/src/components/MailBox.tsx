@@ -20,7 +20,6 @@ const MailBox = ({ isOpen, onClose }: MailBoxProps) => {
   const handleOpenCard = () => {
     if (!isCardOpen) {
       setIsCardOpen(true);
-      // O conteúdo da página direita aparece após metade da animação
       setTimeout(() => setShowContent(true), 600);
     }
   };
@@ -44,13 +43,10 @@ const MailBox = ({ isOpen, onClose }: MailBoxProps) => {
         className={`book-wrapper ${isCardOpen ? 'is-opened' : ''}`} 
         onClick={handleOpenCard}
       >
-
-        {/* Divisória Central (Sombra da Dobra) */}
         <div className="book-spine"></div>
 
-        {/* LADO ESQUERDO: Capa que roda 180º */}
         <div className="book-leaf-left">
-          {/* Frente Rosa */}
+          {/* FRENTE DA CARTA */}
           <div className="leaf-front-pink">
             <div className="cover-circle">
               <img src="/images/her.png" alt="Lilinha" />
@@ -60,7 +56,7 @@ const MailBox = ({ isOpen, onClose }: MailBoxProps) => {
             {!isCardOpen && <p className="tap-hint">Clica para abrir ✨</p>}
           </div>
 
-          {/* Verso Branco (Página Interior Esquerda) */}
+          {/* VERSO DA CARTA (Onde fica o MewMew) */}
           <div className="leaf-back-white">
             <img src="/images/mewmew.gif" alt="Mew Mew" className="gif-inside" />
             <div className="hearts-deco">
@@ -71,14 +67,13 @@ const MailBox = ({ isOpen, onClose }: MailBoxProps) => {
           </div>
         </div>
 
-        {/* LADO DIREITO: Página Fixa (Interior Direita) */}
+        {/* PÁGINA DA MENSAGEM */}
         <div className="book-base-right">
           <div className={`text-content ${showContent ? 'is-visible' : ''}`}>
             <h2 className="greeting-title">Para Uma Pessoa Deveras Especial,</h2>
             <div className="message-text">
-              <p>Feliz aniversário sweetie! Obrigado por tudo, pelas memórias, pelo carinho, afeto e sobretudo pelas tuas tentativas de me rebaixar🙂‍↕️</p>
-              <p>Tenho muito orgulho em ti! A vida são bué de cenas e ainda bem que eu tive a sorte de tu seres uma parte da minha vida.</p>
-              <p>Espero que o teu dia seja tão incrível e lindo quanto tu!</p>
+              <p>Feliz aniversário sweetie! Obrigado por tudo, pelas memórias, pelo carinho, afeto e sobretudo pelas tuas tentativas de me rebaixar 🙂‍↕️</p>
+              <p>Tenho muito orgulho em ti! A vida são bué de cenas e ainda bem que eu tive a sorte de seres uma parte da minha vida.</p>
               <p className="final-signature">Aproveita cada segundo, Lilinha, pois hoje o dia é teu! Arrasaaaa! 💕</p>
             </div>
           </div>
