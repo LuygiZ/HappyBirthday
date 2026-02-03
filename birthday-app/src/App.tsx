@@ -8,6 +8,7 @@ import CircleText from './components/CircleText';
 import Decorations from './components/Decorations';
 import MailButton from './components/MailButton';
 import MailBox from './components/MailBox';
+import EasterEggs from './components/EasterEggs';
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       </main>
 
       <Decorations />
+      <EasterEggs />
       <MailBox isOpen={isMailOpen} onClose={() => setIsMailOpen(false)} />
     </div>
   );

@@ -1,0 +1,754 @@
+/* =========================================
+   FLOATING EMOJIS
+   ========================================= */
+.floating-emoji {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+  opacity: 0.8;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   CLICK HEARTS
+   ========================================= */
+.click-heart {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  font-size: 24px;
+  animation: heartFloat 1.5s ease-out forwards;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes heartFloat {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -150%) scale(0.8);
+  }
+}
+
+/* =========================================
+   POPUP MESSAGES
+   ========================================= */
+.popup-message {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  color: #FF7882;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(255, 120, 130, 0.3);
+  animation: popupAnim 2.5s ease-out forwards;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+@keyframes popupAnim {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -80%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.8);
+  }
+}
+
+/* =========================================
+   SECRET MESSAGE
+   ========================================= */
+.secret-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  animation: secretAppear 4s ease-in-out forwards;
+}
+
+.secret-content {
+  background: linear-gradient(135deg, #FF7882 0%, #ff9a9e 50%, #FFB6C1 100%);
+  padding: 25px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(255, 120, 130, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border: 3px solid white;
+}
+
+.secret-number {
+  font-family: 'Titan One', cursive;
+  font-size: 3rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.secret-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.secret-emoji {
+  font-size: 2rem;
+  animation: emojiWiggle 0.5s infinite;
+}
+
+@keyframes emojiWiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes secretAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+/* =========================================
+   CONFETTI BURST
+   ========================================= */
+.confetti-burst {
+  position: fixed;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confettiFall 2.5s ease-out forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(var(--rotation));
+  }
+}
+
+/* =========================================
+   CORNER EASTER EGG (CAKE)
+   ========================================= */
+.corner-easter-egg {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 500;
+  animation: cakeBounce 2s infinite ease-in-out;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.corner-easter-egg:hover {
+  transform: scale(1.3) rotate(10deg);
+  animation: none;
+}
+
+.corner-easter-egg:active {
+  transform: scale(0.9);
+}
+
+@keyframes cakeBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(3deg);
+  }
+}
+
+/* =========================================
+   MIGUEL EASTER EGG
+   ========================================= */
+.miguel-easter-egg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 15000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: miguelFadeIn 0.8s ease-out;
+}
+
+@keyframes miguelFadeIn {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+.miguel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  animation: miguelAppear 1s ease-out;
+}
+
+@keyframes miguelAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(10deg);
+  }
+  70% {
+    transform: scale(0.95) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.miguel-sparkles {
+  display: flex;
+  gap: 20px;
+  font-size: 1.8rem;
+  animation: sparkleFloat 2s infinite ease-in-out;
+}
+
+.miguel-sparkles.bottom {
+  animation-delay: 0.5s;
+}
+
+.miguel-sparkles span {
+  animation: sparklePulse 1s infinite ease-in-out;
+}
+
+.miguel-sparkles span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.miguel-sparkles span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes sparklePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+.miguel-image-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid white;
+  box-shadow:
+    0 0 0 5px #FF7882,
+    0 0 30px rgba(255, 120, 130, 0.6),
+    0 0 60px rgba(255, 120, 130, 0.3);
+  animation: miguelGlow 2s infinite ease-in-out;
+}
+
+@keyframes miguelGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 5px #FF7882,
+      0 0 30px rgba(255, 120, 130, 0.6),
+      0 0 60px rgba(255, 120, 130, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 5px #FF7882,
+      0 0 50px rgba(255, 120, 130, 0.8),
+      0 0 80px rgba(255, 120, 130, 0.5);
+  }
+}
+
+.miguel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: miguelZoom 3s infinite ease-in-out;
+}
+
+@keyframes miguelZoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.miguel-message {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 250, 0.95) 100%);
+  padding: 20px 35px;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 3px solid #FF7882;
+  animation: messageFloat 3s infinite ease-in-out;
+}
+
+@keyframes messageFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.miguel-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  color: #666;
+  margin: 0;
+}
+
+.miguel-highlight {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #FF7882;
+  margin: 5px 0 10px;
+  text-shadow: 1px 1px 2px rgba(255, 120, 130, 0.3);
+}
+
+.miguel-hearts {
+  font-size: 1.5rem;
+  display: block;
+  animation: heartsWiggle 1s infinite ease-in-out;
+}
+
+@keyframes heartsWiggle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(3deg);
+  }
+}
+
+/* =========================================
+   GIFT EASTER EGG (Heart Rain Trigger)
+   ========================================= */
+.gift-egg {
+  bottom: 70px !important;
+  animation: giftWiggle 3s infinite ease-in-out !important;
+}
+
+@keyframes giftWiggle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.1);
+  }
+}
+
+.gift-egg:hover {
+  animation: none !important;
+  transform: scale(1.4) rotate(0deg) !important;
+}
+
+/* =========================================
+   HEART RAIN
+   ========================================= */
+.heart-rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9000;
+  overflow: hidden;
+}
+
+.rain-heart {
+  position: absolute;
+  top: -50px;
+  animation: heartFall 3s linear forwards;
+  filter: drop-shadow(0 2px 4px rgba(255, 120, 130, 0.3));
+}
+
+@keyframes heartFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.7;
+  }
+}
+
+/* =========================================
+   KONAMI CODE EASTER EGG
+   ========================================= */
+.konami-easter-egg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12000;
+  animation: konamiAppear 5s ease-in-out forwards;
+}
+
+@keyframes konamiAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8) rotate(10deg);
+  }
+}
+
+.konami-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 30px 50px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border: 4px solid #e94560;
+  box-shadow:
+    0 0 30px rgba(233, 69, 96, 0.5),
+    0 0 60px rgba(233, 69, 96, 0.3),
+    inset 0 0 30px rgba(233, 69, 96, 0.1);
+}
+
+.konami-icon {
+  font-size: 3rem;
+  animation: konamiIconBounce 0.5s infinite alternate;
+}
+
+@keyframes konamiIconBounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+.konami-title {
+  font-family: 'Titan One', cursive;
+  font-size: 1.8rem;
+  color: #e94560;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.8);
+}
+
+.konami-text {
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+  padding: 8px 16px;
+  border-radius: 8px;
+  letter-spacing: 2px;
+}
+
+.konami-subtitle {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+/* =========================================
+   MOBILE ADAPTATIONS
+   ========================================= */
+@media screen and (max-width: 768px) {
+  .floating-emoji {
+    font-size: 12px !important;
+    opacity: 0.6;
+  }
+
+  .click-heart {
+    font-size: 18px;
+  }
+
+  .popup-message {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  .secret-content {
+    padding: 18px 28px;
+    max-width: 85vw;
+  }
+
+  .secret-number {
+    font-size: 2.2rem;
+  }
+
+  .secret-text {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .secret-emoji {
+    font-size: 1.5rem;
+  }
+
+  .corner-easter-egg {
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+  }
+
+  .confetti-piece {
+    width: 7px;
+    height: 7px;
+  }
+
+  /* Miguel Easter Egg Mobile */
+  .miguel-image-wrapper {
+    width: 140px;
+    height: 140px;
+    border-width: 4px;
+  }
+
+  .miguel-message {
+    padding: 15px 25px;
+    max-width: 85vw;
+  }
+
+  .miguel-text {
+    font-size: 1.1rem;
+  }
+
+  .miguel-highlight {
+    font-size: 1.4rem;
+  }
+
+  .miguel-hearts {
+    font-size: 1.2rem;
+  }
+
+  .miguel-sparkles {
+    font-size: 1.4rem;
+    gap: 15px;
+  }
+
+  /* Gift Egg Mobile */
+  .gift-egg {
+    bottom: 55px !important;
+    font-size: 1.3rem !important;
+  }
+
+  /* Konami Easter Egg Mobile */
+  .konami-content {
+    padding: 20px 30px;
+    max-width: 85vw;
+  }
+
+  .konami-icon {
+    font-size: 2.2rem;
+  }
+
+  .konami-title {
+    font-size: 1.4rem;
+  }
+
+  .konami-text {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+
+  .konami-subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  /* Heart Rain Mobile */
+  .rain-heart {
+    font-size: 12px !important;
+  }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 400px) {
+  .secret-content {
+    padding: 15px 20px;
+  }
+
+  .secret-number {
+    font-size: 1.8rem;
+  }
+
+  .secret-text {
+    font-size: 1rem;
+  }
+
+  .corner-easter-egg {
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.3rem;
+  }
+
+  /* Miguel Easter Egg Extra Small */
+  .miguel-image-wrapper {
+    width: 120px;
+    height: 120px;
+    border-width: 3px;
+  }
+
+  .miguel-message {
+    padding: 12px 20px;
+  }
+
+  .miguel-text {
+    font-size: 0.95rem;
+  }
+
+  .miguel-highlight {
+    font-size: 1.2rem;
+  }
+
+  .miguel-hearts {
+    font-size: 1rem;
+  }
+
+  .miguel-sparkles {
+    font-size: 1.2rem;
+    gap: 12px;
+  }
+
+  /* Gift Egg Extra Small */
+  .gift-egg {
+    bottom: 45px !important;
+    font-size: 1.1rem !important;
+  }
+
+  /* Konami Easter Egg Extra Small */
+  .konami-content {
+    padding: 15px 20px;
+  }
+
+  .konami-icon {
+    font-size: 1.8rem;
+  }
+
+  .konami-title {
+    font-size: 1.2rem;
+  }
+
+  .konami-text {
+    font-size: 0.85rem;
+  }
+
+  .konami-subtitle {
+    font-size: 0.95rem;
+  }
+}
